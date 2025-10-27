@@ -76,7 +76,7 @@ end
 
 queue_on_teleport([[
     _G.autoSummit = true
-    loadstring(game:HttpGet("https://pastebin.com/raw/VeL2pM1G"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/YantoRoblox/Bahan/refs/heads/main/Rejoin%20Atin.txt"))()
 ]])
 
 local Toggle = MainTab:CreateToggle({
@@ -91,5 +91,6 @@ local Toggle = MainTab:CreateToggle({
         end
     end,
 })
+
 
 Toggle:Set(true)
