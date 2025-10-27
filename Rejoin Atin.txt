@@ -1,0 +1,95 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "🔥 YANTO GUNUNG ATIN VIP ⛰️",
+    LoadingTitle = "⛰️ BY YANTO SCRIPT GUNUNG ATIN 💥",
+    LoadingSubtitle = "by YantoRoblox",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "YantoRoblox Hub"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false
+})
+
+local MainTab = Window:CreateTab("🌄 Auto Summit Hub", nil)
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+    Title = "You executed the script",
+    Content = "Very cool gui",
+    Duration = 5,
+    Image = 13047715178,
+    Actions = {
+        Ignore = {
+            Name = "Okay!",
+            Callback = function()
+                print("The user tapped Okay!")
+            end
+        },
+    },
+})
+
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local function startAutoSummit()
+    _G.autoSummit = true
+    task.spawn(function()
+        while _G.autoSummit do
+            local character = player.Character or player.CharacterAdded:Wait()
+            local humanoidRootPart = character:WaitForChild("HumanoidRootPart", 5)
+            if humanoidRootPart then
+                humanoidRootPart.CFrame = CFrame.new(66, 20, -1146)
+                task.wait(5)
+                humanoidRootPart.CFrame = CFrame.new(625, 1802, 3432)
+                task.wait(10)
+                humanoidRootPart.CFrame = CFrame.new(777, 2188, 3940)
+                task.wait(5)
+                print("SUCCESS TELEPORT")
+                TeleportService:Teleport(game.PlaceId, player)
+                print("SUCCESS REJOIN")
+                break
+            else
+                warn("HumanoidRootPart tidak ditemukan, coba lagi...")
+                task.wait(1)
+            end
+        end
+    end)
+end
+
+local function stopAutoSummit()
+    _G.autoSummit = false
+    print("Auto Summit dihentikan")
+    Rayfield:Notify({
+        Title = "Auto Summit",
+        Content = "Auto Summit berhasil dihentikan.",
+        Duration = 4,
+    })
+end
+
+queue_on_teleport([[
+    _G.autoSummit = true
+    loadstring(game:HttpGet("https://pastebin.com/raw/VeL2pM1G"))()
+]])
+
+local Toggle = MainTab:CreateToggle({
+    Name = "Auto Summit",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        if Value then
+            startAutoSummit()
+        else
+            stopAutoSummit()
+        end
+    end,
+})
+
+Toggle:Set(true)
